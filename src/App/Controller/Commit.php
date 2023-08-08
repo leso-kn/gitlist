@@ -57,10 +57,13 @@ class Commit
         $commits = $repository->getCommits($commitish, 1, $this->perPage);
         $commitish = new Commitish($repository, $commitish);
 
-        return new Response($this->templating->render(sprintf('Commit/feed.%s.twig', $format), [
+        $response = new Response($this->templating->render(sprintf('Commit/feed.%s.twig', $format), [
             'repository' => $repository,
             'commitish' => $commitish,
             'commits' => $commits,
         ]));
+        $response->headers->set('Content-Type', 'application/xml');
+
+        return $response;
     }
 }
