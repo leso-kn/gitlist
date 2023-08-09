@@ -6,6 +6,7 @@ namespace GitList\App\Controller;
 
 use GitList\Repository\Index;
 use GitList\SCM\File;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -17,14 +18,21 @@ class Repository
     {
     }
 
-    public function list(): Response
+    public function list(Request $request): Response
     {
         $repositories = $this->index->getRepositories();
+        $query = $request->query->get('q');
 
+        if ($query != null) {
+            $repositories = array_filter($repositories, function($repo) use ($query) {
+                return str_contains(strtolower($repo->getName()), strtolower($query));
+            });
+        }
         ksort($repositories);
 
         return new Response($this->templating->render('Repository/list.html.twig', [
             'repositories' => $repositories,
+            'query' => $query
         ]));
     }
 

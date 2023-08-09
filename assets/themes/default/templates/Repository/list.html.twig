@@ -4,6 +4,10 @@
   {{ 'REPOSITORY_LIST_TITLE'|trans }}
 {% endblock %}
 
+{% block search %}
+  {% include 'search.html.twig' %}
+{% endblock %}
+
 {% block body %}
 <div class="row row-cols-3 g-4">
   {% for repository in repositories %}
