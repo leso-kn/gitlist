@@ -20,6 +20,15 @@ class CommitSearch
     {
     }
 
+    public function routeSearch(Request $request, string $repository, string $commitish): Response
+    {
+        if ($request->query->has('q') || $request->query->has('criteria')) {
+            return $this->showResults($request, $repository, $commitish);
+        } else {
+            return $this->createForm($request, $repository, $commitish);
+        }
+    }
+
     public function createForm(Request $request, string $repository, string $commitish): Response
     {
         $repository = $this->index->getRepository($repository);
@@ -35,7 +44,7 @@ class CommitSearch
     public function showResults(Request $request, string $repository, string $commitish): Response
     {
         $criteria = new Criteria();
-        $criteria->setMessage($request->request->get('query', ''));
+        $criteria->setMessage($request->query->get('q', ''));
 
         $form = $this->formFactory->create(CriteriaType::class, $criteria);
         $form->handleRequest($request);
@@ -63,6 +72,7 @@ class CommitSearch
             'repository' => $repository,
             'commitGroups' => $commitGroups,
             'commitish' => $commitish,
+            'query' => $criteria->getMessage()
         ]));
     }
 }

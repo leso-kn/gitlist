@@ -17,6 +17,7 @@ class CriteriaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->setMethod('get')
             ->add('from', DateTimeType::class, [
                 'widget' => 'single_text',
                 'required' => false,

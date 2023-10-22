@@ -47,15 +47,7 @@ repository_archive:
 repository_search_commits:
   path: /{repository}/search/commits/{commitish}
   methods: [GET]
-  controller: GitList\App\Controller\CommitSearch::createForm
-  requirements:
-    repository: '%valid_repository_name%'
-    commitish: '%valid_commitish_format%'
-
-repository_search_commits_action:
-  path: /{repository}/search/commits/{commitish}
-  methods: [POST]
-  controller: GitList\App\Controller\CommitSearch::showResults
+  controller: GitList\App\Controller\CommitSearch::routeSearch
   requirements:
     repository: '%valid_repository_name%'
     commitish: '%valid_commitish_format%'
