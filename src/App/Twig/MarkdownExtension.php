@@ -39,12 +39,14 @@ class MarkdownExtension extends AbstractExtension
         ];
     }
 
-    public function markdown($string): string
+    public function markdown($string, $repo_name, $ref): string
     {
         if (!$string) {
             return '';
         }
 
-        return (string) $this->converter->convertToHtml($string);
+        $md = (string) $this->converter->convertToHtml($string);
+        $md = preg_replace('/=\"([^:"]+?(\/.*?\.|\.)(svg|png|jpg|gif|webp))/', '="'.$repo_name.'/raw/'.$ref.'/$1', $md);
+        return $md;
     }
 }

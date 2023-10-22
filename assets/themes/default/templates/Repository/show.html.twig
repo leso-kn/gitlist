@@ -203,7 +203,7 @@
             {{ readme.name }}
           </div>
           <div class="card-body card-body-markdown">
-            {{ readme.contents|markdown|raw }}
+            {{ readme.contents|markdown(repository.name, lastCommit.hash)|raw }}
           </div>
         </div>
       </div>
