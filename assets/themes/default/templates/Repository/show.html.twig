@@ -12,7 +12,11 @@
   <div class="row module-row">
     <div class="col-12">
       <p class="repository-description">
-        {{ repository.description }}
+        {% if not repository.description starts with 'Unnamed repository; ' %}
+          {{ repository.description }}
+        {% else %}
+          {{ 'REPOSITORY_FALLBACK_DESCRIPTION'|trans }}
+        {% endif %}
       </p>
     </div>
   </div>

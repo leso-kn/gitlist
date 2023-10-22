@@ -41,3 +41,5 @@ REPOSITORY_COMMIT_PARENT: মূল
 REPOSITORY_COMMIT_CHANGE_STATS: '%changed%টি পরিবর্তিত ফাইল, যার মধ্যে %additions% নতুন লাইন এবং %deletions% মুছে ফেলা লাইন দেখানো হচ্ছে।'
 REPOSITORY_COMMIT_VIEW_FILE_AT: '@ ফাইল দেখুন'
 REPOSITORY_BLOB_HISTORY_FOR: ইতিহাস
+REPOSITORY_FALLBACK_DESCRIPTION: No description; create file 'description' or '.git/description' to add one this repository.
+POWERED_BY: Powered by

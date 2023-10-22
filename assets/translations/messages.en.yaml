@@ -42,3 +42,5 @@ REPOSITORY_COMMIT_PARENT: Parent
 REPOSITORY_COMMIT_CHANGE_STATS: Showing %changed% changed files, with %additions% additions and %deletions% deletions.
 REPOSITORY_COMMIT_VIEW_FILE_AT: View file @
 REPOSITORY_BLOB_HISTORY_FOR: History for
+REPOSITORY_FALLBACK_DESCRIPTION: No description; create file 'description' or '.git/description' to add one this repository.
+POWERED_BY: Powered by
