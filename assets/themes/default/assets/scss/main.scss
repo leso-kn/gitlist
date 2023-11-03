@@ -24,14 +24,30 @@ $red: #bd2c00;
 $cyan: #b8cbd4;
 
 // Theme
-$primary: $blue;
 $secondary: #fcfcfc;
-$success: $green;
-$info: $cyan;
-$warning: $orange;
-$danger: $red;
 $light: #999;
 $dark: #333;
+
+$theme-colors: (
+  'primary': $blue,
+  'secondary': $secondary,
+  'success': $green,
+  'info': $cyan,
+  'warning': $orange,
+  'danger': $red,
+  'light': $light,
+  'dark': $dark,
+);
+
+$colors: (
+  'blue': $blue,
+  'gray': $gray,
+  'green': $green,
+  'orange': $orange,
+  'purple': $purple,
+  'red': $red,
+  'cyan': $cyan,
+);
 
 // Component colors
 $card-cap-bg: $secondary;

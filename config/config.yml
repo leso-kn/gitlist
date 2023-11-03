@@ -9,6 +9,9 @@ parameters:
   # Theme
   theme: default
 
+  editor_theme: textmate
+  editor_theme_dark: ambiance
+
   # Navigation links
   navigation:
     -

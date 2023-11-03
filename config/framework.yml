@@ -26,6 +26,8 @@ twig:
   globals:
     title: '%title%'
     theme: '%theme%'
+    editor_theme: '%editor_theme%'
+    editor_theme_dark: '%editor_theme_dark%'
     navigation: '%navigation%'
     commit_date_format: '%commit_date_format%'
     commit_group_date_format: '%commit_group_date_format%'
