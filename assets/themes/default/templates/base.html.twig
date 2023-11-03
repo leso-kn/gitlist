@@ -57,7 +57,14 @@
     </div>
 
     <footer class="d-flex justify-content-center">
-      <p>&copy; 2012 - {{ 'now'|date('Y') }} {{ 'POWERED_BY'|trans }} <a href="https://gitlist.org">GitList.org</a></p>
+      <p class="text-center">
+        <small class="d-block mb-1">
+          <a href="{{ path('repository_list_feed', { format: 'rss' }) }}">RSS</a>
+          /
+          <a href={{ path('repository_list_feed', { format: 'atom' }) }}>ATOM</a>
+        </small>
+        &copy; 2012 - {{ 'now'|date('Y') }} {{ 'POWERED_BY'|trans }} <a href="https://gitlist.org">GitList.org</a>
+      </p>
     </footer>
   </body>
 </html>

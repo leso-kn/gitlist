@@ -3,6 +3,12 @@ repository_list:
   path: /
   controller: GitList\App\Controller\Repository::list
 
+repository_list_feed:
+  path: /feed.{format}
+  controller: GitList\App\Controller\Repository::feed
+  requirements:
+    format: (atom|rss|opml)
+
 repository_show:
   path: /{repository}
   controller: GitList\App\Controller\Repository::show

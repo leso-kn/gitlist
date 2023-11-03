@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>{{ url('repository_list') }}</id>
+  <link type="text/html" rel="alternate" href="{{ url('repository_list') }}"/>
+  <link type="application/atom+xml" rel="self" href="{{ url('repository_list_feed', { format: 'atom' }) }}"/>
+  <title>{{ 'REPOSITORY_FEED_RECENT_COMMITS'|trans }}</title>
+  {% for repository in repositories %}
+  {% set lastCommit = repository.getCommit(repository.getTree().getHash()) %}
+  {% set readme = repository.getTree().getReadme() %}
+  {% set readme = readme ? repository.getBlob(lastCommit.hash ~ '/' ~ readme.getName()) : null %}
+  <entry>
+    <id>tag:gitlist.org,2012:commit/{{ repository.name|escape }}</id>
+    <link type="text/html" rel="alternate" href="{{ path('repository_show', { repository: repository.name }) }}" />
+    <link type="application/atom+xml" rel="via" href="feed:{{ url('repository_feed', { repository: repository.name, commitish: repository.defaultBranch, format: 'atom' }) }}" />
+    <title>{{ repository.name }}</title>
+    <updated>{{ lastCommit.commitedAt|date('Y-m-d\\TH:i:sP') }}</updated>
+    <author>
+      <name>{{ lastCommit.author.name }}</name>
+      <email>{{ lastCommit.author.email }}</email>
+    </author>
+    {% if readme %}
+    <content type="html">
+      {{ readme.contents|markdown(repository.name, lastCommit.hash)|raw|escape }}
+    </content>
+    {% endif %}
+  </entry>
+  {% endfor %}
+</feed>

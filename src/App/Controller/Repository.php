@@ -114,4 +114,24 @@ class Repository
 
         return $response;
     }
+
+    public function feed(Request $request, string $format): Response
+    {
+        $repositories = $this->index->getRepositories();
+        $query = $request->query->get('q');
+
+        if ($query != null) {
+            $repositories = array_filter($repositories, function($repo) use ($query) {
+                return str_contains(strtolower($repo->getName()), strtolower($query));
+            });
+        }
+        ksort($repositories);
+
+        $response = new Response($this->templating->render(sprintf('Repository/feed.%s.twig', $format), [
+            'repositories' => $repositories,
+        ]));
+        $response->headers->set('Content-Type', 'application/xml');
+
+        return $response;
+    }
 }
