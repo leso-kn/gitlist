@@ -13,6 +13,7 @@ framework:
   translator:
     paths:
       - '%kernel.project_dir%/assets/translations'
+      - '%kernel.project_dir%/assets/themes/%theme%/translations'
     fallbacks:
       - '%locale%'
   assets:

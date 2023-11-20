@@ -7,6 +7,10 @@ services:
   GitList\:
     resource: '../src/*'
 
+  GitListThemes\:
+    resource: '../assets/themes'
+    tags: ['controller.service_arguments']
+
   GitList\App\Controller\:
     resource: '../src/App/Controller'
     tags: ['controller.service_arguments']
