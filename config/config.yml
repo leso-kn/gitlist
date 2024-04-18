@@ -62,6 +62,6 @@ parameters:
   https_clone_url: 'https://gitlist.org/%s.git' # %s will be replaced by the repository name
 
   # Route validators
-  valid_repository_name: '[a-zA-Z0-9\-\_\.]+'
+  valid_repository_name: '[a-zA-Z0-9\-\_\.\/]+?'
   #valid_commitish_format: '.+'
   valid_commitish_format: '[a-zA-Z0-9\_\.\-\/]+'

@@ -39,7 +39,7 @@ class Index
                     continue;
                 }
 
-                $this->addRepository(new Repository($system, $repository, $directory->getBasename()));
+                $this->addRepository(new Repository($system, $repository, $directory->getRelativePathname()));
             }
         }
     }
