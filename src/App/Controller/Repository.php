@@ -39,6 +39,10 @@ class Repository
     public function show(string $repository): Response
     {
         $repository = $this->index->getRepository($repository);
+        if (!count($repository->getBranches())) return new Response($this->templating->render('Repository/empty.html.twig', [
+            'repository' => $repository
+        ]));
+
         $tree = $repository->getTree();
         $lastCommit = $repository->getCommit($tree->getHash());
         $readme = $tree->getReadme();

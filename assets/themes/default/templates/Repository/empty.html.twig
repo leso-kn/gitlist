@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+  {% include 'page-header.html.twig' with { repository: repository, baseRef: repository.defaultBranch, current: 'code' } %}
+{% endblock %}
+
+{% block search %}
+  {% include 'search.html.twig' with { repository: repository[0], commitish: '' } %}
+{% endblock %}
+
+{% block body %}
+  <div class="row module-row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body p-0">
+          <ul class="nav repository-stats justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="icon ion-md-git-branch"></i> <strong>{{ repository.branches|length }}</strong> {{ 'REPOSITORY_SUBMENU_BRANCHES'|trans }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="icon ion-md-pricetags"></i> <strong>{{ repository.tags|length }}</strong> {{ 'REPOSITORY_SUBMENU_TAGS'|trans }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row module-row">
+    <div class="col-4">
+      
+    </div>
+    <div class="col-8">
+      <div class="btn-toolbar justify-content-end">
+        <div class="input-group clone-input">
+          <div class="input-group-prepend">
+            <button class="btn btn-secondary btn-blend-right dropdown-toggle" type="button" data-toggle="clone-input">
+              {{ 'REPOSITORY_TOOLBAR_CLONE_SSH'|trans }}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#" data-clone-url="{{ ssh_clone_url|format(repository.name) }}">
+                {{ 'REPOSITORY_TOOLBAR_CLONE_SSH'|trans }}
+              </a>
+              <a class="dropdown-item" href="#" data-clone-url="{{ https_clone_url|format(repository.name) }}">
+                {{ 'REPOSITORY_TOOLBAR_CLONE_HTTPS'|trans }}
+              </a>
+            </div>
+          </div>
+          <input type="text" class="form-control" readonly="readonly" value="{{ ssh_clone_url|format(repository.name) }}">
+          <div class="input-group-append">
+            <button class="btn btn-secondary btn-blend-left" type="button" data-placement="right" title="{{ 'REPOSITORY_TOOLBAR_CLONE_COPIED'|trans }}"><i class="icon icon-solo ion-md-clipboard"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row module-row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          {{ 'REPOSITORY_EMPTY_TITLE'|trans }}
+        </div>
+        <div class="card-body">
+          {{ 'REPOSITORY_UNINITIALIZED_TEXT'|trans }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

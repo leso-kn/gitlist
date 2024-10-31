@@ -1,4 +1,5 @@
 ---
+REPOSITORY_EMPTY_TITLE: Leeres Projekt
 REPOSITORY_LIST_TITLE: Projekte
 REPOSITORY_MENU_CODE: Code
 REPOSITORY_MENU_COMMITS: Commits
@@ -43,4 +44,5 @@ REPOSITORY_COMMIT_CHANGE_STATS: '%changed% geanderte Dateien, mit %additions% ne
 REPOSITORY_COMMIT_VIEW_FILE_AT: Datei anzeigen @
 REPOSITORY_BLOB_HISTORY_FOR: Verlauf von
 REPOSITORY_FALLBACK_DESCRIPTION: Datei 'description' oder '.git/description' anlegen um eine Projektbeschreibung hinzuzufügen.
+REPOSITORY_UNINITIALIZED_TEXT: Dieses Projekt wurde noch nicht initialisiert. Klonen und einen ersten Commit hinzufügen um diese Seite einzurichten.
 POWERED_BY: Läuft mit
